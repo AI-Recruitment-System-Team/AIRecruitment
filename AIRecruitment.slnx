@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/AIRecruitment.API/AIRecruitment.API.csproj" Id="91f1fa19-5ecd-4611-bdd2-76a72fe873fb" />
+  <Project Path="src/AIRecruitment.BLL/AIRecruitment.BLL.csproj" Id="f9bf6035-ffb6-4f96-9ce5-17840a38b3ce" />
+  <Project Path="src/AIRecruitment.DAL/AIRecruitment.DAL.csproj" Id="5e84396d-93d1-4058-b41d-34a26ce6f2b4" />
+  <Project Path="src/AIRecruitment.Domain/AIRecruitment.Domain.csproj" Id="c9f9ad4f-81e3-4a6a-9929-cd62aae87b92" />
+</Solution>
