@@ -19,7 +19,7 @@ namespace AIRecruitment.Domain.Entities
         //navigational props
         public CandidateProfile CandidateProfile { get; set; }
 
-        //public List<Application> Applications { get; set; }
+        public List<Application> Applications { get; set; }
 
 
     }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using AIRecruitment.Domain.Entities;
-using System.Security.Cryptography;
 
 namespace AIRecruitment.DAL.Context;
 
@@ -20,5 +19,14 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
 
     public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
+    public DbSet<Company> Companies { get; set; }
+    public DbSet<CandidateProfile> CandidateProfiles { get; set; }
+    public DbSet<Resume> Resumes { get; set; }
+    public DbSet<CandidateSkill> CandidateSkills { get; set; }
+    public DbSet<Application> Application { get; set; }
+    public DbSet<AIAnalysis> AIAnalyses { get; set; }
+
+
     
 }

@@ -1,9 +1,8 @@
-﻿using AIRecruitment.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AIRecruitment.Domain.Enums
+namespace AIRecruitment.Domain.Entities
 {
     public class AIAnalysis
     {
