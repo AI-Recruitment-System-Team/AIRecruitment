@@ -21,7 +21,7 @@ namespace AIRecruitment.Domain.Entities
         //public Job Job { get; set; }
 
         public Resume Resume { get; set; }
-        //public AIAnalysis AIAnalysis { get; set; }
+        public AIAnalysis AIAnalysis { get; set; }
         //public Interview Interview { get; set; }
 
     }
