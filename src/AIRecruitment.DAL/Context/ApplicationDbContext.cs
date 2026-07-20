@@ -11,4 +11,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         
     }
+
+    //apply all configs
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+    }
 }
