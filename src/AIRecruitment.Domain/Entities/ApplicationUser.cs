@@ -15,7 +15,7 @@ public class ApplicationUser : IdentityUser
 
     public CandidateProfile CandidateProfile { get; set; }
 
-    //public List<Job> Jobs { get; set; }
+    public List<Job> Jobs { get; set; }
 
-    //public List<Notification> Notifications { get; set; }
+    public List<Notification> Notifications { get; set; }
 }
