@@ -17,7 +17,9 @@ namespace AIRecruitment.Domain.Entities
         public string PortfolioUrl { get; set; }
 
         //navigational props
-        //public ApplicationUser Candidate { get; set; }
+        public ApplicationUser Candidate { get; set; } //?
+        
+        public int CandidateId { get; set; } 
 
         public List<Resume> Resumes { get; set; }
 

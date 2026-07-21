@@ -28,6 +28,6 @@ namespace AIRecruitment.Domain.Entities
 
         public List<JobSkill> JobSkills { get; set; }
 
-        //public List<Application> Applications { get; set; }
+        public List<Application> Applications { get; set; }
     }
 }

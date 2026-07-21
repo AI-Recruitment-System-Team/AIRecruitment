@@ -11,7 +11,7 @@ namespace AIRecruitment.Domain.Entities
 
         //navigational props
         public List<CandidateSkill> CandidateSkills { get; set; }
-        //public List<JobSkill> JobSkills { get; set; }
+        public List<JobSkill> JobSkills { get; set; } //?
 
     }
 }

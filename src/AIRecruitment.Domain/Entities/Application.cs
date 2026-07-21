@@ -12,13 +12,13 @@ namespace AIRecruitment.Domain.Entities
 
         //fk
         public int CandidateProfileId { get; set; }
-        //public int JobId { get; set; }
+        public int JobId { get; set; }
         public int ResumeId { get; set; }
 
         //navigational props
         public CandidateProfile CandidateProfile { get; set; }
 
-        //public Job Job { get; set; }
+        public Job Job { get; set; }
 
         public Resume Resume { get; set; }
         public AIAnalysis AIAnalysis { get; set; }

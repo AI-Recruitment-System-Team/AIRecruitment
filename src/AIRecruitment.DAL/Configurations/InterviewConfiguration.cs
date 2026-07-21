@@ -30,6 +30,11 @@ namespace AIRecruitment.DAL.Configurations
                    .WithOne(f => f.Interview)
                    .HasForeignKey<InterviewFeedback>(f => f.InterviewId)
                    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(i => i.Application)
+                   .WithMany(a => a.Interviews)
+                   .HasForeignKey(i => i.ApplicationId)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
