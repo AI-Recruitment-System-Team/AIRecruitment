@@ -22,7 +22,7 @@ namespace AIRecruitment.Domain.Entities
 
         public Resume Resume { get; set; }
         public AIAnalysis AIAnalysis { get; set; }
-        //public Interview Interview { get; set; }
+        public List<Interview> Interviews { get; set; }
 
     }
 }
