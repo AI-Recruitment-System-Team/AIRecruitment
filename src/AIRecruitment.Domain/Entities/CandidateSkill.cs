@@ -13,8 +13,5 @@ namespace AIRecruitment.Domain.Entities
         public CandidateProfile CandidateProfile { get; set; }
         public Skill Skill { get; set; }
 
-
-
-
     }
 }

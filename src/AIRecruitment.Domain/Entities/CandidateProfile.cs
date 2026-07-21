@@ -17,13 +17,15 @@ namespace AIRecruitment.Domain.Entities
         public string PortfolioUrl { get; set; }
 
         //navigational props
-        //public ApplicationUser Candidate { get; set; }
+        public ApplicationUser Candidate { get; set; } //?
+        
+        public int CandidateId { get; set; } 
 
         public List<Resume> Resumes { get; set; }
 
-        //public List<CandidateSkill> CandidateSkills { get; set; }
-
-        //public List<Application> Applications { get; set; }
+        public List<CandidateSkill> CandidateSkills { get; set; }
+        
+        public List<Application> Applications { get; set; } //?
 
 
     }

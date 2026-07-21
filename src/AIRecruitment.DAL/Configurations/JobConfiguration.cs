@@ -42,7 +42,11 @@ namespace AIRecruitment.DAL.Configurations
                    .WithOne(js => js.Job)
                    .HasForeignKey(js => js.JobId)
                    .OnDelete(DeleteBehavior.Restrict);
-
+            
+            builder.HasMany(j => j.Applications)
+                   .WithOne(a => a.Job)
+                   .HasForeignKey(a => a.JobId)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace AIRecruitment.Domain.Entities
 
         // Navigational Properties
 
-        //public Application Application { get; set; }
+        public Application Application { get; set; }
 
         public InterviewFeedback InterviewFeedback { get; set; }
     }

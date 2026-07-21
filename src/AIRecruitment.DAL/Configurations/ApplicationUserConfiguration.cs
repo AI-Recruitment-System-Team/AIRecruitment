@@ -31,6 +31,11 @@ namespace AIRecruitment.DAL.Configurations
                    .WithOne(n => n.ApplicationUser)
                    .HasForeignKey(n => n.UserId)
                    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(ap => ap.CandidateProfile)
+                   .WithOne(cp => cp.Candidate)
+                   .HasForeignKey<CandidateProfile>(cp => cp.CandidateId)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -14,5 +14,5 @@ public class JobSkill
 
     public Job Job { get; set; }
 
-    //public Skill Skill { get; set; }
+    public Skill Skill { get; set; }
 }
