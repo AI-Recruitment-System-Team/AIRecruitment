@@ -23,9 +23,9 @@ namespace AIRecruitment.Domain.Entities
 
         public List<Resume> Resumes { get; set; }
 
-        public List<CandidateSkill> CandidateSkills { get; set; }
-        
-        public List<Application> Applications { get; set; } //?
+        //public List<CandidateSkill> CandidateSkills { get; set; }
+
+        public List<Application> Applications { get; set; }
 
 
     }
