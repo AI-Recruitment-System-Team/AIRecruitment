@@ -16,6 +16,9 @@ namespace AIRecruitment.DAL.Configurations
 
             builder.Property(ap => ap.AvatarUrl)
                 .HasMaxLength(500);
+                
+            builder.Property(ap => ap.Headline)
+                .HasMaxLength(150);
 
             builder.Property(ap => ap.IsActive);
 

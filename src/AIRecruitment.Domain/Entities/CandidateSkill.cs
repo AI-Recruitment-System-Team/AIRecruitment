@@ -3,6 +3,7 @@ namespace AIRecruitment.Domain.Entities
 {
     public class CandidateSkill
     {
+        public int Id { get; set; }
         public CandidateSkillLevel Level { get; set; }
 
         //fk
