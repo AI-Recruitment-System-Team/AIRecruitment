@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.10" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.10">
+    <PrivateAssets>all</PrivateAssets>
+  </PackageReference>
+  <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+</ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AIRecruitment.BLL\AIRecruitment.BLL.csproj" />
+    <ProjectReference Include="..\AIRecruitment.DAL\AIRecruitment.DAL.csproj" />
   </ItemGroup>
 
 </Project>

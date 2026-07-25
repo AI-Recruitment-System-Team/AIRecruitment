@@ -7,6 +7,7 @@ namespace AIRecruitment.Domain.Entities
 {
     public class Application
     {
+        public int Id { get; set; }
         public DateTime AppliedAt { get; set; }
         public ApplicationStatus Status { get; set; }
 
