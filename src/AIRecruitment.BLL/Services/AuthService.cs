@@ -2,6 +2,7 @@ using AIRecruitment.BLL.DTOs.Auth;
 using AIRecruitment.BLL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using AIRecruitment.Domain.Entities;
+using AIRecruitment.DAL.Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -14,11 +15,13 @@ public class AuthService : IAuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly IConfiguration _configuration;
+    private readonly ApplicationDbContext _context;
 
-    public AuthService(UserManager<ApplicationUser> userManager, IConfiguration configuration)
+    public AuthService(UserManager<ApplicationUser> userManager, IConfiguration configuration, ApplicationDbContext context)
     {
         _userManager = userManager;
         _configuration = configuration;
+        _context = context;
     }
     public async Task RegisterAsync(RegisterDto registerDto)
     {
@@ -44,7 +47,26 @@ public class AuthService : IAuthService
         {
             throw new Exception(string.Join(",", roleResult.Errors.Select(e => e.Description)));
         }
+
+        if (registerDto.Role == "Candidate")
+        {
+            var CandidateProfile = new CandidateProfile
+            {
+                CandidateId = user.Id,
+                Country = "",
+                City = "",
+                DOB = DateTime.UtcNow,
+                YearsofExperience = 0,
+                Summary = "",
+                LinkedinUrl = "",
+                GithubUrl = "",
+                PortfolioUrl = ""
+            };
+            _context.CandidateProfiles.Add(CandidateProfile);
+        }
+        await _context.SaveChangesAsync();
     }
+    
     public async Task<LoginResponseDto> LoginAsync(LoginDto loginDto)
     {
         var user = await _userManager.FindByEmailAsync(loginDto.Email);

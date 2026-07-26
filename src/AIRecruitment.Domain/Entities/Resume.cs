@@ -21,6 +21,5 @@ namespace AIRecruitment.Domain.Entities
 
         public List<Application> Applications { get; set; }
 
-
     }
 }

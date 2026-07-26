@@ -8,6 +8,7 @@ using System.Text;
 using AIRecruitment.BLL.Interfaces;
 using AIRecruitment.BLL.Services;
 using Microsoft.OpenApi.Models;
+using AIRecruitment.BLL.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +50,8 @@ builder.Services.AddAuthentication(option =>
 
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IJobService, JobService>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddEndpointsApiExplorer();
 
 
