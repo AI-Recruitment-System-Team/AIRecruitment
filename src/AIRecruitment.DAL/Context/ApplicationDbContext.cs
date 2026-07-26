@@ -24,10 +24,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<CandidateProfile> CandidateProfiles { get; set; }
     public DbSet<Resume> Resumes { get; set; }
     public DbSet<CandidateSkill> CandidateSkills { get; set; }
-    public DbSet<Application> Application { get; set; }
+    public DbSet<Application> Applications { get; set; }
     public DbSet<AIAnalysis> AIAnalyses { get; set; }
     public DbSet<Job> Jobs { get; set; }
     public DbSet<JobSkill> JobSkills { get; set; }
+    public DbSet<Skill> Skills { get; set; }
     public DbSet<Interview> Interviews { get; set; }
     public DbSet<InterviewFeedback> InterviewFeedbacks { get; set; }
     public DbSet<Notification> Notifications { get; set; }

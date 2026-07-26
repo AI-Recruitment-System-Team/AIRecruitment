@@ -4,6 +4,7 @@ using AIRecruitment.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AIRecruitment.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260725203005_AddCompanyToJob")]
+    partial class AddCompanyToJob
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,9 +83,6 @@ namespace AIRecruitment.DAL.Migrations
                     b.Property<int>("CandidateProfileId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CoverNote")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("JobId")
                         .HasColumnType("int");
 
@@ -101,7 +101,7 @@ namespace AIRecruitment.DAL.Migrations
 
                     b.HasIndex("ResumeId");
 
-                    b.ToTable("Applications");
+                    b.ToTable("Application");
                 });
 
             modelBuilder.Entity("AIRecruitment.Domain.Entities.ApplicationUser", b =>
@@ -391,9 +391,6 @@ namespace AIRecruitment.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ApplicantCount")
-                        .HasColumnType("int");
-
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
@@ -416,19 +413,6 @@ namespace AIRecruitment.DAL.Migrations
                     b.Property<int>("ExperienceRequired")
                         .HasColumnType("int");
 
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<decimal>("MaxSalary")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("MinSalary")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("RecruiterId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -438,10 +422,10 @@ namespace AIRecruitment.DAL.Migrations
                         .HasMaxLength(3000)
                         .HasColumnType("nvarchar(3000)");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("SalaryRange")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -572,7 +556,7 @@ namespace AIRecruitment.DAL.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skill");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

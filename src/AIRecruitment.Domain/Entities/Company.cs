@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AIRecruitment.Domain.Entities
+﻿namespace AIRecruitment.Domain.Entities
 {
     public class Company
     {
@@ -12,6 +8,7 @@ namespace AIRecruitment.Domain.Entities
         public string? WebsiteUrl { get; set; }
         public string? LogoUrl { get; set; }
 
-
+        // Navigation Property
+        public List<Job> Jobs { get; set; }
     }
 }

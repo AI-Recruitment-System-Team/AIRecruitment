@@ -10,6 +10,7 @@ namespace AIRecruitment.Domain.Entities
         public int Id { get; set; }
         public DateTime AppliedAt { get; set; }
         public ApplicationStatus Status { get; set; }
+        public string? CoverNote { get; set; }
 
         //fk
         public int CandidateProfileId { get; set; }

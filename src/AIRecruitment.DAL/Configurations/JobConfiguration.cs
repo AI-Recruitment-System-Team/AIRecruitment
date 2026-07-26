@@ -22,8 +22,17 @@ namespace AIRecruitment.DAL.Configurations
             builder.Property(j => j.EmploymentType)
                    .HasMaxLength(50);
 
-            builder.Property(j => j.SalaryRange)
-                   .HasMaxLength(100);
+            builder.Property(j => j.MinSalary)
+                   .HasPrecision(18, 2);
+            
+            builder.Property(j => j.MaxSalary)
+                   .HasPrecision(18, 2);
+              
+              builder.Property(j => j.Location)
+                     .HasMaxLength(200);
+
+              builder.Property(j => j.Status)
+                     .HasMaxLength(20);
 
             builder.Property(j => j.CreatedAt);
 
@@ -37,6 +46,11 @@ namespace AIRecruitment.DAL.Configurations
                    .WithMany(ap => ap.Jobs)
                    .HasForeignKey(j => j.RecruiterId)
                    .OnDelete(DeleteBehavior.Restrict);
+
+           builder.HasOne(j => j.Company)
+                  .WithMany(c => c.Jobs)
+                  .HasForeignKey(j => j.CompanyId)
+                  .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(j => j.JobSkills)
                    .WithOne(js => js.Job)
