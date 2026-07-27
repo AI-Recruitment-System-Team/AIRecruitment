@@ -19,23 +19,52 @@ namespace AIRecruitment.API.Controllers
         //Returns all available jobs
         [HttpGet]
         public async Task<IActionResult> GetAllJobs(
-                [FromQuery] string? keyword, 
-                [FromQuery] decimal? minSalary, 
+                [FromQuery] string? keyword,
+                [FromQuery] decimal? minSalary,
                 [FromQuery] string? skill)
-            {
-                var jobs = await _jobService.GetAllJobsAsync(keyword, minSalary, skill);
-                return Ok(jobs);
-            }
-            
+        {
+            var jobs = await _jobService.GetAllJobsAsync(keyword, minSalary, skill);
+            return Ok(jobs);
+        }
+
+        //Returns a job by its ID
         [HttpGet("{id}")]
         public async Task<IActionResult> GetJobById(int id)
         {
             var job = await _jobService.GetJobByIdAsync(id);
 
-            if(job == null)
+            if (job == null)
                 return NotFound("Job not found. ");
 
             return Ok(job);
+        }
+
+        //Returns all jobs created by the logged-in recruiter
+        [Authorize(Roles = "Recruiter")]
+        [HttpGet("my-jobs")]
+        public async Task<IActionResult> GetRecruiterJobs()
+        {
+            var recruiterId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(recruiterId))
+                return Unauthorized();
+
+            var jobs = await _jobService.GetRecruiterJobsAsync(recruiterId);
+
+            return Ok(jobs);
+        }
+
+        //Toggle job status
+        [Authorize(Roles = "Recruiter")]
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> ToggleJobStatus(int id)
+        {
+            await _jobService.ToggleJobStatusAsync(id);
+
+            return Ok(new
+            {
+                message = "Job status updated successfully."
+            });
         }
 
         //Create a new job
@@ -45,7 +74,7 @@ namespace AIRecruitment.API.Controllers
         {
             var recruiterId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if(string.IsNullOrEmpty(recruiterId))
+            if (string.IsNullOrEmpty(recruiterId))
                 return Unauthorized();
 
             await _jobService.CreateJobAsync(dto, recruiterId);
@@ -69,6 +98,7 @@ namespace AIRecruitment.API.Controllers
             });
         }
 
+        //Delete a job
         [Authorize(Roles = "Recruiter")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJob(int id)
@@ -78,7 +108,22 @@ namespace AIRecruitment.API.Controllers
             return Ok(new
             {
                 message = "Job deleted successfully."
-           });
+            });
+        }
+
+        //Returns recruiter dashboard statistics
+        [Authorize(Roles = "Recruiter")]
+        [HttpGet("dashboard")]
+        public async Task<IActionResult> GetRecruiterDashboard()
+        {
+            var recruiterId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(recruiterId))
+                return Unauthorized();
+
+            var dashboard = await _jobService.GetRecruiterDashboardAsync(recruiterId);
+
+            return Ok(dashboard);
         }
     }
 }
