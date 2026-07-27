@@ -19,6 +19,12 @@ namespace AIRecruitment.BLL.Mapping
                 .ForMember(dest => dest.ApplicantCount,
                     opt => opt.MapFrom(src =>
                         src.Applications.Count));
+            
+            CreateMap<Job, RecruiterJobDto>()
+                .ForMember(dest => dest.Company,
+                    opt => opt.MapFrom(src => src.Company.Name))
+                .ForMember(dest => dest.JobType,
+                    opt => opt.MapFrom(src => src.EmploymentType));
 
             CreateMap<CreateJobDto, Job>();
             CreateMap<UpdateJobDto, Job>();

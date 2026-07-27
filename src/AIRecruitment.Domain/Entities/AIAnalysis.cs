@@ -7,7 +7,7 @@ namespace AIRecruitment.Domain.Entities
     public class AIAnalysis
     {
         public int Id { get; set; }
-        public string MatchScore { get; set; }
+        public int MatchScore { get; set; }
         public DateTime AnalyzedAt { get; set; }
         public string Recommendations { get; set; }
         public string MatchedSkills { get; set; }
