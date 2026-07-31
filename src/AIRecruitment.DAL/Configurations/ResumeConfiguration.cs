@@ -11,9 +11,11 @@ namespace AIRecruitment.DAL.Configurations
             builder.HasKey(r => r.Id);
 
             builder.Property(r => r.FileName)
+                .IsRequired()
                 .HasMaxLength(100);
 
             builder.Property(r => r.FileUrl)
+                .IsRequired()
                 .HasMaxLength(500);
 
             builder.Property(r => r.ExtractedText)

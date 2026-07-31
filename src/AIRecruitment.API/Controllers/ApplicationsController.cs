@@ -1,4 +1,3 @@
-using AIRecruitment.BLL.DTOs;
 using AIRecruitment.BLL.DTOs.Application;
 using AIRecruitment.DAL.Context;
 using AIRecruitment.Domain.Entities;
@@ -6,7 +5,6 @@ using AIRecruitment.Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-
 namespace AIRecruitment.API.Controllers
 {
     [Route("api/[controller]")]

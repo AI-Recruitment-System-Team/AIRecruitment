@@ -9,6 +9,7 @@ using AIRecruitment.BLL.Interfaces;
 using AIRecruitment.BLL.Services;
 using Microsoft.OpenApi.Models;
 using AIRecruitment.BLL.Mapping;
+using AIRecruitment.DAL.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -91,18 +92,12 @@ builder.Services.AddControllers();
 var app = builder.Build();
 
 
-//Create default roles when the application starts.
+//Seed initial application data.
 using (var scope = app.Services.CreateScope())
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    string[] roles = {"Candidate", "Recruiter"};
-    foreach (var role in roles)
-    {
-        if(!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
+    var services = scope.ServiceProvider;
+
+    await DbSeeder.SeedAsync(services);
 }
 
 // Configure the HTTP request pipeline.

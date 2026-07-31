@@ -12,7 +12,8 @@ namespace AIRecruitment.DAL.Configurations
                 .HasColumnType("date");
 
             builder.Property(a => a.Status)
-               .HasConversion<string>();
+               .HasConversion<string>()
+               .HasMaxLength(50);
 
             builder.HasOne(a => a.CandidateProfile)
                  .WithMany(cp => cp.Applications)

@@ -34,6 +34,10 @@ namespace AIRecruitment.DAL.Configurations
                 .HasMaxLength(500);
 
             //relationships
+            builder.HasMany(cp => cp.CandidateSkills)
+                .WithOne(cs => cs.CandidateProfile)
+                .HasForeignKey(cs => cs.CandidateProfileId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

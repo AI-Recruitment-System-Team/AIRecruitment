@@ -135,7 +135,8 @@ namespace AIRecruitment.BLL.Services
         public async Task<RecruiterDashboardDto> GetRecruiterDashboardAsync(string recruiterId)
         {
             var activeJobs = await _context.Jobs
-                .CountAsync(j => j.RecruiterId == recruiterId);
+                .CountAsync(j => j.RecruiterId == recruiterId &&
+                                 j.Status == "Open");
 
             var totalApplicants = await _context.Applications
                 .CountAsync(a => a.Job.RecruiterId == recruiterId);
