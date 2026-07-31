@@ -103,11 +103,11 @@ namespace AIRecruitment.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJob(int id)
         {
-            await _jobService.DeleteJobeAsync(id);
+            await _jobService.ToggleJobStatusAsync(id);
 
             return Ok(new
             {
-                message = "Job deleted successfully."
+                message = "Job closed successfully."
             });
         }
 

@@ -13,21 +13,17 @@ namespace AIRecruitment.DAL.Configurations
         {
 
             builder.Property(ai => ai.MatchScore)
-                .HasMaxLength(100);
+                .IsRequired();
 
             builder.Property(ai => ai.AnalyzedAt);
 
             builder.Property(ai => ai.Recommendations)
                 .HasMaxLength(1000);
 
-            builder.Property(ai => ai.MatchedSkills);
+            builder.Property(ai => ai.MatchedSkills)
+                .IsRequired();
 
             builder.Property(ai => ai.MissingSkills);
-
-            builder.Property(ai => ai.Recommendations)
-                .HasMaxLength(1000);
-
-            builder.Property(ai => ai.AnalyzedAt);
 
             builder.HasOne(ai => ai.Application)
                 .WithOne(a => a.AIAnalysis)

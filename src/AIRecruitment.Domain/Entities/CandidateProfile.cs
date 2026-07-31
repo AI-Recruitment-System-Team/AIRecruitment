@@ -18,13 +18,9 @@ namespace AIRecruitment.Domain.Entities
 
         //navigational props
         public ApplicationUser Candidate { get; set; } //?
-        
         public string CandidateId { get; set; } 
-
         public List<Resume> Resumes { get; set; }
-
-        //public List<CandidateSkill> CandidateSkills { get; set; }
-
+        public List<CandidateSkill> CandidateSkills { get; set; }
         public List<Application> Applications { get; set; }
 
 

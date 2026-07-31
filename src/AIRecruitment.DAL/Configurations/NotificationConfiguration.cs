@@ -11,6 +11,7 @@ namespace AIRecruitment.DAL.Configurations
             builder.HasKey(n => n.Id);
 
             builder.Property(n => n.Title)
+                   .IsRequired()
                    .HasMaxLength(200);
 
             builder.Property(n => n.Message)

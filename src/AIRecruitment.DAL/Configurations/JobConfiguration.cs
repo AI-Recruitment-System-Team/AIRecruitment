@@ -39,6 +39,8 @@ namespace AIRecruitment.DAL.Configurations
             builder.Property(j => j.Deadline);
 
             builder.Property(j => j.ExperienceRequired);
+            
+            builder.Property(j => j.ApplicantCount);
 
             // Relationships
 

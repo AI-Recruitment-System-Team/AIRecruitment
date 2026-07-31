@@ -12,9 +12,17 @@ namespace AIRecruitment.DAL.Configurations
             builder.HasKey(s => s.Id);
 
             builder.Property(s => s.Name)
+                .IsRequired()
                 .HasMaxLength(100);
 
             builder.HasIndex(s => s.Name).IsUnique();
+
+            //relationships
+
+            builder.HasMany(s => s.CandidateSkills)
+                .WithOne(cs => cs.Skill)
+                .HasForeignKey(cs => cs.SkillId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }
